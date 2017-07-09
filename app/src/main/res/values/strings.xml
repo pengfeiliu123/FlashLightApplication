@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">PlayFlashLight</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_long_press_title">Long Press</string>
+    <string name="pref_long_press_summary">Toggle the flashlight with a long press anywhere on the screen.</string>
+
+    <string name="white_title">White When On</string>
+    <string name="white_summary">Turn the background white when the light is on.</string>
+    <string name="title_menu_settings">settings</string>
+    <string name="pref_long_press">long_press</string>
+    <string name="pref_white">white</string>
+    <string name="action_about_title">About</string>
+    <string name="about_rate_text">Taking a few seconds to rate an app is very important for the developer. It allows us to continually improve the experience, and helps other users decide whether an app is right for them. How about telling us what you think?</string>
+    <string name="about_pos_btn_text">Love It!</string>
+    <string name="about_neg_button_text">Needs Work</string>
+    <string name="about_meh_btn_text">Maybe Later</string>
+    <string name="about_rate_heading">Flashlight Rating</string>
+    <string name="about_intro_text">Open Flashlight, by Steve Sanbeg.  This application is free software, distributed under the terms of the GNU GPL, version 3 or later.</string>
+
+
+    <string name="color_swatch_description">Color %1$d</string>
+    <string name="color_swatch_description_selected">Color %1$d selected</string>
+    <string name="color_picker_default_title">Select a Color</string>
+    <string name="title">Choose backgroundColor</string>
+
+
+    <integer-array name="color_choose">
+        <item>@color/black</item>
+        <item>@color/grey_050</item>
+        <item>@color/red_050</item>
+        <item>@color/red_200</item>
+        <item>@color/red_500</item>
+        <item>@color/pink_200</item>
+        <item>@color/pink_400</item>
+        <item>@color/purple_300</item>
+        <item>@color/brown_900</item>
+        <item>@color/purple_500</item>
+        <item>@color/purple_900</item>
+        <item>@color/red_100</item>
+        <item>@color/purple_a700</item>
+        <item>@color/deep_purple_400</item>
+        <item>@color/teal_700</item>
+        <item>@color/cyan_700</item>
+        <item>@color/lime_900</item>
+        <item>@color/cyan_900</item>
+        <item>@color/green_a200</item>
+        <item>@color/light_green_600</item>
+        <item>@color/light_green_800</item>
+        <item>@color/blue_grey_800</item>
+        <item>@color/deep_orange_a400</item>
+        <item>@color/amber_a700</item>
+    </integer-array>
+</resources>

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "223321315378",
+    "firebase_url": "https://uninstallapk-69260.firebaseio.com",
+    "project_id": "uninstallapk-69260",
+    "storage_bucket": "uninstallapk-69260.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223321315378:android:8e19cebf7ad0ecf7",
+        "android_client_info": {
+          "package_name": "com.lpf.uninstall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223321315378-djejul2rpj28d739f1ieio9c926ma1bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkRvRlUdmNJoGlgrxzS2eDkY5ZX5s0-6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223321315378:android:3cf6b54b01b5f3b1",
+        "android_client_info": {
+          "package_name": "com.lpf.flashlight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223321315378-djejul2rpj28d739f1ieio9c926ma1bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkRvRlUdmNJoGlgrxzS2eDkY5ZX5s0-6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
