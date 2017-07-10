@@ -22,16 +22,42 @@ public class PreferencesUtil {
         return instance;
     }
 
-    public int savedBgColor(int bgColor){
+    public boolean savedBgColor(int bgColor) {
         if (sharedPreferences != null) {
-            return sharedPreferences.getInt("bgColor", bgColor);
+            return sharedPreferences.edit().putInt("bgColor", bgColor).commit();
+        }
+        return false;
+    }
+
+    public int getBgColor() {
+        if (sharedPreferences != null) {
+            return sharedPreferences.getInt("bgColor", R.color.black);
         }
         return R.color.black;
     }
 
-    public int getBgColor(){
+    public void saveLightWidth(int width) {
         if (sharedPreferences != null) {
-            return sharedPreferences.getInt("bgColor", R.color.black);
+            sharedPreferences.edit().putInt("width", width).commit();
+        }
+    }
+
+    public void saveLightHeight(int height) {
+        if (sharedPreferences != null) {
+            sharedPreferences.edit().putInt("height", height).commit();
+        }
+    }
+
+    public int getLightWidth() {
+        if (sharedPreferences != null) {
+            return sharedPreferences.getInt("width", 200);
+        }
+        return R.color.black;
+    }
+
+    public int getLightHeight() {
+        if (sharedPreferences != null) {
+            return sharedPreferences.getInt("height", 200);
         }
         return R.color.black;
     }

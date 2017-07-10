@@ -56,8 +56,17 @@ public class MainActivity extends FragmentActivity {
 
         initSos();
 
+        initLightSize();
 
+    }
 
+    private void initLightSize() {
+        int width = PreferencesUtil.getInstance(this).getLightWidth();
+        int height = PreferencesUtil.getInstance(this).getLightHeight();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) flashLightLayout.getLayoutParams();
+        layoutParams.width = width;
+        layoutParams.height = height;
+        flashLightLayout.setLayoutParams(layoutParams);
     }
 
     private void initViews() {
@@ -165,6 +174,11 @@ public class MainActivity extends FragmentActivity {
                     //触摸动作抬起时将两个距离初始化
                     case MotionEvent.ACTION_UP:
                         lastDistance = 0;
+
+                        int height = (int) (flashLightLayout.getHeight() * scaleSize);
+                        int width = (int) (flashLightLayout.getWidth() * scaleSize);
+                        PreferencesUtil.getInstance(MainActivity.this).saveLightWidth(width);
+                        PreferencesUtil.getInstance(MainActivity.this).saveLightHeight(height);
                         break;
                 }
                 return true;
@@ -251,6 +265,7 @@ public class MainActivity extends FragmentActivity {
         int savedColor = PreferencesUtil.getInstance(this).getBgColor();
         background.setBackgroundColor(savedColor);
 
+        theButton.setChecked(true);
         if (theButton.isChecked()) {
             theButton.setEnabled(false);
             new FlashTask().execute();
