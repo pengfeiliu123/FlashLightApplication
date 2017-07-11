@@ -31,19 +31,24 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:src="@mipmap/sos_white"
+            android:visibility="gone"
             app:civ_border_color="@color/red"
             app:civ_border_width="5dp"
             app:civ_fill_color="@color/red" />
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/flashLightLayout"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="250dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="bottom|center_horizontal"
         android:orientation="vertical">
 
         <ToggleButton
@@ -51,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/switch_bg_toggle"
-            android:checked="true"
+            android:checked="false"
             android:gravity="center"
             android:onClick="onToggleClicked"
             android:textOff=""
@@ -60,10 +65,11 @@
 
     <SeekBar
         android:id="@+id/light_seekbar"
-        android:layout_width="200dp"
+        style="@android:style/Widget.Holo.SeekBar"
+        android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        style="@android:style/Widget.Holo.SeekBar" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"/>
 
 </LinearLayout>

@@ -59,7 +59,7 @@ public class MainActivity extends FragmentActivity {
 
         initLightSize();
 
-        flash.on();
+        flash.off();
 
     }
 
@@ -80,7 +80,7 @@ public class MainActivity extends FragmentActivity {
 //        theButton.setKeepScreenOn(true);
 //        theButton.setChecked(true);
 //        theButton.setEnabled(true);
-//
+////
 //        sosImg.setVisibility(View.VISIBLE);
 //        sosOnUI(ContextCompat.getColor(MainActivity.this, R.color.red), R.mipmap.sos_white);
 
@@ -88,6 +88,18 @@ public class MainActivity extends FragmentActivity {
 //            flash.off();
 //            sosImg.setVisibility(View.GONE);
 //        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        flash.off();
+        theButton.setChecked(false);
+        if (mThread != null) {
+            mThread.interrupt();
+        }
+        isSosOn = false;
+        sosImg.setVisibility(View.GONE);
     }
 
     private void initLightSize() {
@@ -176,8 +188,8 @@ public class MainActivity extends FragmentActivity {
                                 lastDistance = currentDistance;
                             } else {
                                 if (currentDistance > lastDistance) {
-                                    if (flashLightLayout.getWidth() < screenSize / 2) {
-                                        scaleSize = 1.05f;
+                                    if (flashLightLayout.getWidth() < screenSize *2 / 3) {
+                                        scaleSize = 1.03f;
                                     } else {
                                         scaleSize = 1f;
                                     }
@@ -186,8 +198,8 @@ public class MainActivity extends FragmentActivity {
                                     //当当前距离小于之前距离时，进行缩小操作
                                 } else if (currentDistance < lastDistance) {
                                     //防止图片被缩小的太小，最小不能超过屏幕宽度的1/4
-                                    if (flashLightLayout.getWidth() > screenSize / 4) {
-                                        scaleSize = 0.95f;
+                                    if (flashLightLayout.getWidth() > screenSize / 3) {
+                                        scaleSize = 0.97f;
                                     } else {
                                         scaleSize = 1f;
                                     }
@@ -219,6 +231,8 @@ public class MainActivity extends FragmentActivity {
     private void initSeekBar() {
         lightSeekBar = (SeekBar) findViewById(R.id.light_seekbar);
         lightSeekBar.setMax(254);
+        lightSeekBar.setProgress(127);
+        setWindowBrightness(127);
         lightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -260,16 +274,16 @@ public class MainActivity extends FragmentActivity {
                     while (isSosOn) {
 
                         for (int i = 0; i < 3; i++) {
-                            Thread.sleep(250);
+                            Thread.sleep(300);
                             flash.off();
-                            Thread.sleep(250);
+                            Thread.sleep(300);
                             flash.on();
                         }
 
                         for (int i = 0; i < 3; i++) {
-                            Thread.sleep(500);
+                            Thread.sleep(600);
                             flash.off();
-                            Thread.sleep(500);
+                            Thread.sleep(600);
                             flash.on();
                         }
                     }
@@ -286,20 +300,6 @@ public class MainActivity extends FragmentActivity {
     private float setCurrentDistance(float x1, float y1, float x2, float y2) {
         currentDistance = (float) Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
         return currentDistance;
-    }
-
-
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        flash.off();
-        if (mThread != null) {
-            mThread.interrupt();
-        }
-        isSosOn = false;
-        sosImg.setVisibility(View.GONE);
-//        flash.close();
     }
 
     @Override
