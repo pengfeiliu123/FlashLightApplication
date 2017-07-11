@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -58,6 +59,35 @@ public class MainActivity extends FragmentActivity {
 
         initLightSize();
 
+        flash.on();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        int savedColor = PreferencesUtil.getInstance(this).getBgColor();
+        background.setBackgroundColor(savedColor);
+
+//        theButton.setChecked(true);
+//        if (theButton.isChecked()) {
+//            theButton.setEnabled(false);
+//            new FlashTask().execute();
+//            theButton.setKeepScreenOn(true);
+
+//        new FlashTask().execute();
+//        theButton.setKeepScreenOn(true);
+//        theButton.setChecked(true);
+//        theButton.setEnabled(true);
+//
+//        sosImg.setVisibility(View.VISIBLE);
+//        sosOnUI(ContextCompat.getColor(MainActivity.this, R.color.red), R.mipmap.sos_white);
+
+//        } else {
+//            flash.off();
+//            sosImg.setVisibility(View.GONE);
+//        }
     }
 
     private void initLightSize() {
@@ -93,7 +123,7 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        sosImg.setVisibility(View.VISIBLE);
+//        sosImg.setVisibility(View.VISIBLE);
         sosOnUI(ContextCompat.getColor(MainActivity.this, R.color.red), R.mipmap.sos_white);
     }
 
@@ -258,27 +288,7 @@ public class MainActivity extends FragmentActivity {
         return currentDistance;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
 
-        int savedColor = PreferencesUtil.getInstance(this).getBgColor();
-        background.setBackgroundColor(savedColor);
-
-        theButton.setChecked(true);
-        if (theButton.isChecked()) {
-            theButton.setEnabled(false);
-            new FlashTask().execute();
-            theButton.setKeepScreenOn(true);
-
-            sosImg.setVisibility(View.VISIBLE);
-            sosOnUI(ContextCompat.getColor(MainActivity.this, R.color.red), R.mipmap.sos_white);
-
-        } else {
-            flash.off();
-            sosImg.setVisibility(View.GONE);
-        }
-    }
 
     @Override
     public void onPause() {
@@ -289,7 +299,13 @@ public class MainActivity extends FragmentActivity {
         }
         isSosOn = false;
         sosImg.setVisibility(View.GONE);
-        flash.close();
+//        flash.close();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        flash.off();
     }
 
     public void onToggleClicked(View v) {
@@ -329,6 +345,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         protected void onPostExecute(Boolean success) {
+            Log.d("lpftag", "success->" + success);
             theButton.setEnabled(true);
             if (!success) {
                 Toast.makeText(MainActivity.this, "Failed to access camera.", Toast.LENGTH_SHORT).show();
